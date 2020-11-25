@@ -1,16 +1,25 @@
 <template>
   <div class="container">
-    <main>
-    <h1>Home page</h1>
-    <NuxtLink to="/weather/AbuDhabi">
-      Abu Dhabi
-    </NuxtLink>
-  </main>
+    <div>
+      <Logo />
+      <h1 class="title">
+        weather-vuejs-app
+      </h1>
+      <div class="links">
+        {{cityId}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+    data() {
+        return {
+            cityId: this.$route.params.woeid || "Pakistan"
+        }
+    }
+}
 </script>
 
 <style>

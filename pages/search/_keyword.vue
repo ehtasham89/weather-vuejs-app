@@ -1,16 +1,25 @@
 <template>
   <div class="container">
-    <main>
-    <h1>Home page</h1>
-    <NuxtLink to="/weather/AbuDhabi">
-      Abu Dhabi
-    </NuxtLink>
-  </main>
+    <div>
+      <Logo />
+      <h1 class="title">
+        weather-vuejs-app
+      </h1>
+      <div class="links">
+        Search in {{keyword}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+    data() {
+        return {
+            keyword: this.$route.params.keyword || "Dubai"
+        }
+    }
+}
 </script>
 
 <style>
