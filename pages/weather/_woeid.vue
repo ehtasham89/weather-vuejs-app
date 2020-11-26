@@ -1,13 +1,8 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        weather-vuejs-app
-      </h1>
-      <div class="links">
-        {{cityId}}
-      </div>
+    <h2 class="text-success text-center" v-if="loading">Loading Data</h2>
+    <div class="mt-5">
+        <Weather :woeid="this.woeid" :consolidated="true" @notLoading="removeLoading"></Weather>
     </div>
   </div>
 </template>
@@ -16,7 +11,7 @@
 export default {
     data() {
         return {
-            cityId: this.$route.params.woeid || "Pakistan"
+            woeid: this.$route.params.woeid || "pakistan"
         }
     }
 }

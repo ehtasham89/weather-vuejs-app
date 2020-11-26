@@ -1,14 +1,7 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        weather-vuejs-app
-      </h1>
-      <div class="links">
-        Search in {{keyword}}
-      </div>
-    </div>
+    <Search></Search>
+    <Weather v-if="keyword" :city="keyword"></Weather>
   </div>
 </template>
 
