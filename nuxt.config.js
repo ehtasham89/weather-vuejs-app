@@ -1,3 +1,5 @@
+let development = process.env.NODE_ENV !== 'production';
+
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -46,7 +48,7 @@ export default {
     baseURL: 'http://localhost/weather-vuejs-app'
   },
   router: {
-    base: './',
+    base: development ? '':'./',
     mode: 'hash'
   },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
