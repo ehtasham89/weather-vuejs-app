@@ -7,20 +7,21 @@
                 <h5 class="card-title" v-text="city_details.title" v-if="!consolidated"></h5>
                 <h3 class="card-title text-center" v-if="consolidated">Today</h3>
                 <div class="card_subtitle">
-                    <h6 v-text="`Temperature : ${Math.round(city_details.consolidated_weather[0].the_temp)} °C`"></h6>
+                    <span style="font-size: 14px" v-text="`Temperature : ${Math.round(city_details.consolidated_weather[0].the_temp)} °C`"></span>
                     <span v-text="city_details.consolidated_weather[0].weather_state_name"></span>
                 </div>
                 <div class="card-text">
-                    <div class="row">
-                        <div class="col-md-6">
-                                <span class="lead"
-                                      v-text="`Max : ${Math.round(city_details.consolidated_weather[0].max_temp)} °C - Min : ${Math.round(city_details.consolidated_weather[0].min_temp)} °C`"></span>
-
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="text-danger text-center" v-if="!consolidated">Today</h3>
-                        </div>
-                    </div>
+                    <b-row v-if="!consolidated">
+                      <b-col>
+                            <h5 class="text-danger text-center mt15" v-if="!consolidated">Today</h5>
+                      </b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col>
+                            <span class="lead"
+                                  v-text="`Max : ${Math.round(city_details.consolidated_weather[0].max_temp)} °C - Min : ${Math.round(city_details.consolidated_weather[0].min_temp)} °C`"></span>
+                        </b-col>
+                    </b-row>
                 </div>
             </div>
         </div>
@@ -72,7 +73,7 @@
     },
     computed: {
       icon() {
-        return `background: url("https://www.metaweather.com/static/img/weather/png/${this.icon_name}.png") no-repeat;background-position-x: 100%;background-position-y: 40%;background-size: 14%;`;
+        return `background: url("https://www.metaweather.com/static/img/weather/png/${this.icon_name}.png") no-repeat;background-position-x: 95%;background-position-y: 40%;background-size: 14%;`;
       }
     },
     watch: {
@@ -118,7 +119,7 @@
         this.$router.push(`/weather/${woeid}`)
       },
       getIcon(iconName) {
-        return `background: url(https://www.metaweather.com/static/img/weather/png/${iconName}.png) no-repeat;background-position-x:100%;background-position-y: 40%;background-size: 14%;`
+        return `background: url(https://www.metaweather.com/static/img/weather/png/${iconName}.png) no-repeat;background-position-x:95%;background-position-y: 40%;background-size: 14%;`
       },
       getDate(date) {
         let d = new Date(date).toString().replace(/\S+\s(\S+)\s(\d+)\s(\d+)\s.*/,'$1 $2, $3');
@@ -131,7 +132,11 @@
 <style>
 .weather {
   animation: 1s appear;
+  flex-direction: row;
   margin: auto;
+}
+.mt15 {
+  margin-top: 15px;
 }
 
 @keyframes appear {

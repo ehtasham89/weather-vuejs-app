@@ -1,11 +1,13 @@
 <template>
-    <div class="container">
-        <Search></Search>
-        <h2 class="text-success text-center" v-if="loading">Loading Data</h2>
-        <div  v-for="city in cities">
-            <Weather :city="city" @notLoading="removeLoading"></Weather>
-        </div>
-    </div>
+    <b-container> 
+      <Loader v-if="loading" />
+      
+      <b-row class="mt-25">
+        <b-col class="hp-5" v-for="city in cities">
+          <Weather :city="city" v-bind:key="city.woeid" @notLoading="removeLoading" />
+        </b-col>
+      </b-row>
+    </b-container>
 </template>
 
 <script>
@@ -26,11 +28,11 @@
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.mt-25 {
+  margin-top: 25px;
+}
+.hp-5 {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
 </style>
