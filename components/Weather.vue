@@ -94,7 +94,7 @@
     methods: {
       async getCityDetails(woeid) {
         const self = this;
-        await this.$axios.$get(`http://localhost/fs-code-test/weather-vuejs-app/weather.php?command=location&woeid=${woeid}`)
+        await this.$axios.$get(`/weather.php?command=location&woeid=${woeid}`)
             .then((response) => {
               let arr = response.consolidated_weather;
               self.consolidatedWeather = arr.splice(1, arr.length);
@@ -104,7 +104,7 @@
       },
       async getWoeid(city) {
         const self = this;
-        await this.$axios.$get(`http://localhost/fs-code-test/weather-vuejs-app/weather.php?command=search&keyword=${city}`)
+        await this.$axios.$get(`/weather.php?command=search&keyword=${city}`)
             .then((response) => {
               if (response.length > 0) {
                 self.getCityDetails(response[0]['woeid']);
